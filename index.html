@@ -34,6 +34,7 @@ padding:20px;
 text-align:center;
 font-size:28px;
 font-weight:bold;
+box-shadow:0 0 25px red;
 }
 
 .container{
@@ -79,10 +80,11 @@ gap:40px;
 }
 
 .pack-box{
-background:rgba(15,15,15,0.6);
+background:rgba(15,15,15,0.65);
 padding:25px;
 border-radius:15px;
 border:1px solid rgba(255,0,0,0.5);
+box-shadow:0 0 15px rgba(255,0,0,0.4);
 }
 
 .item{
@@ -114,13 +116,22 @@ font-weight:bold;
 background:#ff2a2a;
 border:none;
 color:white;
-padding:6px 14px;
-border-radius:6px;
+padding:8px 16px;
+border-radius:8px;
 cursor:pointer;
+font-weight:bold;
+transition:0.2s;
+box-shadow:0 0 10px red;
 }
 
 .buy-btn:hover{
+transform:scale(1.15);
+box-shadow:0 0 20px red;
 background:#ff0000;
+}
+
+.buy-btn:active{
+transform:scale(0.9);
 }
 
 .social{
@@ -137,6 +148,11 @@ border-radius:10px;
 text-decoration:none;
 color:white;
 font-size:16px;
+transition:0.2s;
+}
+
+.btn:hover{
+transform:scale(1.1);
 }
 
 .discord{background:#5865F2;}
@@ -186,7 +202,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.85);
 display:none;
 align-items:center;
 justify-content:center;
@@ -195,15 +211,31 @@ z-index:999;
 
 .chat-box{
 background:#111;
-padding:30px;
-border-radius:12px;
+padding:35px;
+border-radius:15px;
 text-align:center;
 border:1px solid red;
+box-shadow:0 0 25px red;
+animation:popup 0.4s ease;
+}
+
+@keyframes popup{
+
+0%{
+transform:scale(0.5);
+opacity:0;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
 }
 
 .chat-btn{
 display:block;
-width:200px;
+width:220px;
 margin:10px auto;
 padding:12px;
 border:none;
@@ -211,6 +243,11 @@ border-radius:8px;
 color:white;
 font-size:16px;
 cursor:pointer;
+transition:0.2s;
+}
+
+.chat-btn:hover{
+transform:scale(1.1);
 }
 
 .fb{background:#1877F2;}
@@ -253,17 +290,10 @@ NEXPLAY GAMESTORE
 <div class="admin-box">
 <img src="./admin.png" class="admin-img">
 <div class="admin-info">
-
 <h3>Admin NekoJom</h3>
-
-<p>
-ใช้ ID - PASS ในการเติม 📌<br>
-🎮 มี Premium ได้เพิ่ม 10%<br>
-⚡ เติมเร็วมาก ใช้เวลาไม่ถึง 5 นาที
-</p>
-
+<p>ใช้ ID - PASS ในการเติม📌</p>
+<p>🎮 มีพรีเมียมได้เพิ่ม 10% เติมเร็วมาก ใช้เวลาไม่ถึง 5 นาที</p>
 <p>ตอบไว • เติมจริง • ปลอดภัย</p>
-
 </div>
 </div>
 
@@ -335,12 +365,16 @@ NEXPLAY GAMESTORE
 let selectedPack=""
 
 function buy(pack){
+
 selectedPack=pack
 document.getElementById("chatPopup").style.display="flex"
+
 }
 
 function closeChat(){
+
 document.getElementById("chatPopup").style.display="none"
+
 }
 
 function goChat(type){
@@ -362,7 +396,9 @@ window.open("https://www.instagram.com/nexplay_gamestore/")
 }
 
 function showLineQR(){
+
 document.getElementById("lineQR").style.display="block"
+
 }
 
 </script>
