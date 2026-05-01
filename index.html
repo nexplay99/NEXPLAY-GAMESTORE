@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -30,12 +29,11 @@ z-index:-1;
 }
 
 header{
-background:rgba(139,0,0,0.85);
+background:rgba(139,0,0,0.9);
 padding:20px;
 text-align:center;
 font-size:28px;
 font-weight:bold;
-backdrop-filter:blur(6px);
 }
 
 .container{
@@ -147,69 +145,96 @@ font-size:16px;
 
 footer{
 text-align:center;
-margin-top:50px;
-opacity:0.7;
+margin-top:40px;
+opacity:0.8;
 }
 
-.buy-popup{
+.luffy-left{
+position:fixed;
+left:10px;
+top:50%;
+transform:translateY(-50%);
+height:220px;
+pointer-events:none;
+}
+
+.luffy-right{
+position:fixed;
+right:10px;
+top:50%;
+transform:translateY(-50%) scaleX(-1);
+height:220px;
+pointer-events:none;
+}
+
+@media(max-width:768px){
+
+.pack-grid{
+grid-template-columns:1fr;
+}
+
+.luffy-left,
+.luffy-right{
+height:120px;
+}
+
+}
+
+.chat-popup{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.8);
 display:none;
 align-items:center;
 justify-content:center;
 z-index:999;
 }
 
-.buy-box{
+.chat-box{
 background:#111;
 padding:30px;
-border-radius:15px;
+border-radius:12px;
 text-align:center;
 border:1px solid red;
-width:300px;
 }
 
-.buy-box h2{
-margin-top:0;
-color:#ff4040;
-}
-
-.buy-channels{
-display:flex;
-flex-direction:column;
-gap:12px;
-margin-top:20px;
-}
-
-.buy-channels button{
+.chat-btn{
+display:block;
+width:200px;
+margin:10px auto;
 padding:12px;
 border:none;
 border-radius:8px;
-cursor:pointer;
-font-size:16px;
 color:white;
+font-size:16px;
+cursor:pointer;
 }
 
-.buy-channels button:nth-child(1){background:#1877F2;}
-.buy-channels button:nth-child(2){background:#ff2a7f;}
-.buy-channels button:nth-child(3){background:#06C755;}
+.fb{background:#1877F2;}
+.ig{background:#E1306C;}
+.line{background:#06C755;}
 
 .close-btn{
-margin-top:20px;
+margin-top:10px;
 background:#444;
-padding:8px 16px;
 border:none;
+padding:8px 15px;
 border-radius:6px;
 color:white;
 cursor:pointer;
 }
 
-@media(max-width:768px){
-.pack-grid{grid-template-columns:1fr;}
+#lineQR{
+display:none;
+margin-top:15px;
+}
+
+#lineQR img{
+width:180px;
+border-radius:10px;
 }
 
 </style>
@@ -229,6 +254,8 @@ NEXPLAY GAMESTORE
 <img src="admin.png" class="admin-img">
 <div class="admin-info">
 <h3>Admin NekoJom</h3>
+<p></p>ใช้ ID - PASS ในการเติม📌
+🎮 มีพรีเมียมได้เพิ่ม 10%  เติมเร็วมาก ใช้เวลาไม่ถึง 5 นาที</p>
 <p>ตอบไว • เติมจริง • ปลอดภัย</p>
 </div>
 </div>
@@ -274,19 +301,24 @@ NEXPLAY GAMESTORE
 
 </div>
 
-<div id="buyPopup" class="buy-popup">
-<div class="buy-box">
+<img src="luffy.png" class="luffy-left">
+<img src="luffy.png" class="luffy-right">
 
-<h2>เลือกช่องทางการสั่งซื้อ</h2>
-<p id="selectedPack"></p>
+<div id="chatPopup" class="chat-popup">
+<div class="chat-box">
 
-<div class="buy-channels">
-<button onclick="sendFB()">Facebook</button>
-<button onclick="sendIG()">Instagram</button>
-<button onclick="sendLine()">LINE</button>
+<h3>เลือกช่องทางสั่งซื้อ</h3>
+
+<button class="chat-btn fb" onclick="goChat('fb')">Facebook</button>
+<button class="chat-btn ig" onclick="goChat('ig')">Instagram</button>
+<button class="chat-btn line" onclick="showLineQR()">LINE</button>
+
+<div id="lineQR">
+<p>สแกน QR เพื่อแอด LINE</p>
+<img src="lineqr.png">
 </div>
 
-<button class="close-btn" onclick="closePopup()">ปิด</button>
+<button class="close-btn" onclick="closeChat()">ปิด</button>
 
 </div>
 </div>
@@ -297,35 +329,36 @@ let selectedPack=""
 
 function buy(pack){
 selectedPack=pack
-document.getElementById("selectedPack").innerText=pack
-document.getElementById("buyPopup").style.display="flex"
+document.getElementById("chatPopup").style.display="flex"
 }
 
-function closePopup(){
-document.getElementById("buyPopup").style.display="none"
+function closeChat(){
+document.getElementById("chatPopup").style.display="none"
 }
 
-function sendFB(){
-let page="NEXPLAY.GAMESTORE"
+function goChat(type){
+
 let message=encodeURIComponent(
-"สวัสดีครับ ผมต้องการสั่งซื้อ\n"+selectedPack+"\nจากเว็บไซต์ NEXPLAY GAMESTORE"
+"สวัสดีครับ/ค่ะ ต้องการสั่งซื้อ\n"+
+selectedPack+
+"\nจากเว็บไซต์ NEXPLAY GAMESTORE"
 )
-window.open("https://m.me/"+page+"?text="+message)
+
+if(type==="fb"){
+window.open("https://m.me/NEXPLAY.GAMESTORE?text="+message)
 }
 
-function sendIG(){
-window.open("https://ig.me/m/nexplay_gamestore")
+if(type==="ig"){
+window.open("https://www.instagram.com/nexplay_gamestore/")
 }
 
-function sendLine(){
-let message=encodeURIComponent(
-"สวัสดีครับ/ค่ะ ต้องการสั่งซื้อ\n"+selectedPack+"\nจากเว็บไซต์ NEXPLAY GAMESTORE"
-)
-window.open("https://line.me/R/msg/text/?"+message)
+}
+
+function showLineQR(){
+document.getElementById("lineQR").style.display="block"
 }
 
 </script>
 
 </body>
 </html>
-```
