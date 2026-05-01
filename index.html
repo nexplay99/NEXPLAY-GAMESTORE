@@ -2,8 +2,9 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>NEXPLAY GAMESTORE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>NEXPLAY GAMESTORE</title>
 <link rel="icon" type="image/png" href="icon.png">
 
 <style>
@@ -15,8 +16,6 @@ color:white;
 background:url("background.jpg") no-repeat center center fixed;
 background-size:cover;
 }
-
-/* พื้นหลังมืด */
 
 body::before{
 content:"";
@@ -48,7 +47,7 @@ margin:auto;
 padding:30px;
 }
 
-/* รูปโปรโมท */
+/* PROMO */
 
 .robux-img{
 width:100%;
@@ -57,7 +56,7 @@ box-shadow:0 0 25px red;
 margin-bottom:30px;
 }
 
-/* ADMIN PROFILE */
+/* ADMIN */
 
 .admin-box{
 display:flex;
@@ -68,7 +67,6 @@ border:1px solid rgba(255,0,0,0.6);
 padding:15px;
 border-radius:12px;
 margin-bottom:40px;
-backdrop-filter:blur(6px);
 }
 
 .admin-img{
@@ -81,11 +79,6 @@ border:2px solid red;
 .admin-info h3{
 margin:0;
 color:#ff4040;
-}
-
-.admin-info p{
-margin:3px 0;
-opacity:0.8;
 }
 
 /* PACK GRID */
@@ -103,13 +96,6 @@ background:rgba(15,15,15,0.6);
 padding:25px;
 border-radius:15px;
 border:1px solid rgba(255,0,0,0.5);
-backdrop-filter:blur(8px);
-}
-
-.pack-box h2{
-text-align:center;
-color:#ff4040;
-margin-bottom:20px;
 }
 
 /* ITEM */
@@ -132,7 +118,6 @@ gap:10px;
 
 .robux-icon{
 width:24px;
-height:24px;
 }
 
 .price{
@@ -140,7 +125,7 @@ color:#00ff9c;
 font-weight:bold;
 }
 
-/* ปุ่มสั่งซื้อ */
+/* BUY BUTTON */
 
 .buy-btn{
 background:#ff2a2a;
@@ -149,7 +134,6 @@ color:white;
 padding:6px 14px;
 border-radius:6px;
 cursor:pointer;
-font-size:14px;
 }
 
 .buy-btn:hover{
@@ -201,6 +185,43 @@ pointer-events:none;
 100%{transform:translateY(-110vh) rotate(360deg);opacity:0;}
 }
 
+/* LUFFY */
+
+.luffy-left{
+position:fixed;
+left:10px;
+top:50%;
+transform:translateY(-50%);
+height:220px;
+pointer-events:none;
+opacity:0.9;
+}
+
+.luffy-right{
+position:fixed;
+right:10px;
+top:50%;
+transform:translateY(-50%) scaleX(-1);
+height:220px;
+pointer-events:none;
+opacity:0.9;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.pack-grid{
+grid-template-columns:1fr;
+}
+
+.luffy-left,
+.luffy-right{
+height:130px;
+}
+
+}
+
 </style>
 </head>
 
@@ -224,97 +245,78 @@ NEXPLAY GAMESTORE
 
 <div class="pack-grid">
 
+<!-- SPECIAL PACK -->
+
 <div class="pack-box">
 <h2>SPECIAL PACK 🎮</h2>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">80 Robux</div>
-<span class="price">30 บาท</span>
-<button class="buy-btn" onclick="buy('80 Robux - 30 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">80 Robux</div><span class="price">30 บาท</span><button class="buy-btn" onclick="buy('80 Robux - 30 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">240 Robux</div>
-<span class="price">88 บาท</span>
-<button class="buy-btn" onclick="buy('240 Robux - 88 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">240 Robux</div><span class="price">88 บาท</span><button class="buy-btn" onclick="buy('240 Robux - 88 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">500 Robux</div>
-<span class="price">145 บาท</span>
-<button class="buy-btn" onclick="buy('500 Robux - 145 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">500 Robux</div><span class="price">145 บาท</span><button class="buy-btn" onclick="buy('500 Robux - 145 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">1000 Robux</div>
-<span class="price">290 บาท</span>
-<button class="buy-btn" onclick="buy('1000 Robux - 290 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">1000 Robux</div><span class="price">290 บาท</span><button class="buy-btn" onclick="buy('1000 Robux - 290 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">1500 Robux</div>
-<span class="price">435 บาท</span>
-<button class="buy-btn" onclick="buy('1500 Robux - 435 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">1500 Robux</div><span class="price">435 บาท</span><button class="buy-btn" onclick="buy('1500 Robux - 435 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">2000 Robux</div>
-<span class="price">580 บาท</span>
-<button class="buy-btn" onclick="buy('2000 Robux - 580 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">2000 Robux</div><span class="price">580 บาท</span><button class="buy-btn" onclick="buy('2000 Robux - 580 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">4000 Robux</div>
-<span class="price">1150 บาท</span>
-<button class="buy-btn" onclick="buy('4000 Robux - 1150 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">4000 Robux</div><span class="price">1150 บาท</span><button class="buy-btn" onclick="buy('4000 Robux - 1150 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">6000 Robux</div>
-<span class="price">1730 บาท</span>
-<button class="buy-btn" onclick="buy('6000 Robux - 1730 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">6000 Robux</div><span class="price">1730 บาท</span><button class="buy-btn" onclick="buy('6000 Robux - 1730 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">8000 Robux</div>
-<span class="price">2300 บาท</span>
-<button class="buy-btn" onclick="buy('8000 Robux - 2300 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">8000 Robux</div><span class="price">2300 บาท</span><button class="buy-btn" onclick="buy('8000 Robux - 2300 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">10000 Robux</div>
-<span class="price">2800 บาท</span>
-<button class="buy-btn" onclick="buy('10000 Robux - 2800 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">10000 Robux</div><span class="price">2800 บาท</span><button class="buy-btn" onclick="buy('10000 Robux - 2800 บาท')">สั่งซื้อ</button></div>
 
 </div>
+
+<!-- PREMIUM -->
 
 <div class="pack-box">
 <h2>ROBLOX PREMIUM 🎮</h2>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">Premium + 450R</div>
-<span class="price">150 บาท</span>
-<button class="buy-btn" onclick="buy('Premium + 450R - 150 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">Premium + 450R</div><span class="price">150 บาท</span><button class="buy-btn" onclick="buy('Premium + 450R - 150 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">Premium + 1000R</div>
-<span class="price">300 บาท</span>
-<button class="buy-btn" onclick="buy('Premium + 1000R - 300 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">Premium + 1000R</div><span class="price">300 บาท</span><button class="buy-btn" onclick="buy('Premium + 1000R - 300 บาท')">สั่งซื้อ</button></div>
 
-<div class="item">
-<div class="item-left"><img src="robux.png" class="robux-icon">Premium + 2200R</div>
-<span class="price">590 บาท</span>
-<button class="buy-btn" onclick="buy('Premium + 2200R - 590 บาท')">สั่งซื้อ</button>
-</div>
+<div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">Premium + 2200R</div><span class="price">590 บาท</span><button class="buy-btn" onclick="buy('Premium + 2200R - 590 บาท')">สั่งซื้อ</button></div>
 
 </div>
 
 </div>
 
+<footer>
+ช่องทางการติดต่อ
+</footer>
+
+<div class="social">
+
+<a class="btn discord" href="https://discord.gg/nexplaygamestore99" target="_blank">Discord</a>
+<a class="btn facebook" href="https://www.facebook.com/NEXPLAY.GAMESTORE" target="_blank">Facebook</a>
+<a class="btn instagram" href="https://www.instagram.com/nexplay_gamestore/" target="_blank">Instagram</a>
+
 </div>
+
+<footer>
+© 2026 NEXPLAY GAMESTORE
+</footer>
+
+</div>
+
+<!-- ROBUX FLOAT -->
+
+<img src="robux.png" class="robux-float" style="left:5%;animation-duration:8s;">
+<img src="robux.png" class="robux-float" style="left:20%;animation-duration:10s;">
+<img src="robux.png" class="robux-float" style="left:40%;animation-duration:7s;">
+<img src="robux.png" class="robux-float" style="left:60%;animation-duration:9s;">
+<img src="robux.png" class="robux-float" style="left:80%;animation-duration:11s;">
+
+<!-- LUFFY -->
+
+<img src="luffy.png" class="luffy-left">
+<img src="luffy.png" class="luffy-right">
 
 <script>
 
@@ -323,7 +325,7 @@ function buy(pack){
 let page = "NEXPLAY.GAMESTORE"
 
 let message = encodeURIComponent(
-"สวัสดีครับ/ค่ะ ต้องการสั่งซื้อ\n" +
+"สวัสดีครับ ผมต้องการสั่งซื้อ\n" +
 pack +
 "\nจากเว็บไซต์ NEXPLAY GAMESTORE"
 )
