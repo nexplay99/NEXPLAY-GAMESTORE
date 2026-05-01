@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -28,8 +29,6 @@ background:rgba(0,0,0,0.55);
 z-index:-1;
 }
 
-/* HEADER */
-
 header{
 background:rgba(139,0,0,0.85);
 padding:20px;
@@ -39,15 +38,11 @@ font-weight:bold;
 backdrop-filter:blur(6px);
 }
 
-/* CONTAINER */
-
 .container{
 max-width:1200px;
 margin:auto;
 padding:30px;
 }
-
-/* PROMO */
 
 .robux-img{
 width:100%;
@@ -55,8 +50,6 @@ border-radius:15px;
 box-shadow:0 0 25px red;
 margin-bottom:30px;
 }
-
-/* ADMIN */
 
 .admin-box{
 display:flex;
@@ -81,15 +74,11 @@ margin:0;
 color:#ff4040;
 }
 
-/* PACK GRID */
-
 .pack-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:40px;
 }
-
-/* PACK BOX */
 
 .pack-box{
 background:rgba(15,15,15,0.6);
@@ -97,8 +86,6 @@ padding:25px;
 border-radius:15px;
 border:1px solid rgba(255,0,0,0.5);
 }
-
-/* ITEM */
 
 .item{
 display:flex;
@@ -125,8 +112,6 @@ color:#00ff9c;
 font-weight:bold;
 }
 
-/* BUY BUTTON */
-
 .buy-btn{
 background:#ff2a2a;
 border:none;
@@ -139,8 +124,6 @@ cursor:pointer;
 .buy-btn:hover{
 background:#ff0000;
 }
-
-/* SOCIAL */
 
 .social{
 display:flex;
@@ -168,58 +151,65 @@ margin-top:50px;
 opacity:0.7;
 }
 
-/* ROBUX FLOAT */
-
-.robux-float{
+.buy-popup{
 position:fixed;
-bottom:-50px;
-width:40px;
-opacity:0.8;
-animation:floatUp linear infinite;
-pointer-events:none;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
 }
 
-@keyframes floatUp{
-0%{transform:translateY(0) rotate(0deg);opacity:0;}
-10%{opacity:0.9;}
-100%{transform:translateY(-110vh) rotate(360deg);opacity:0;}
+.buy-box{
+background:#111;
+padding:30px;
+border-radius:15px;
+text-align:center;
+border:1px solid red;
+width:300px;
 }
 
-/* LUFFY */
-
-.luffy-left{
-position:fixed;
-left:10px;
-top:50%;
-transform:translateY(-50%);
-height:220px;
-pointer-events:none;
-opacity:0.9;
+.buy-box h2{
+margin-top:0;
+color:#ff4040;
 }
 
-.luffy-right{
-position:fixed;
-right:10px;
-top:50%;
-transform:translateY(-50%) scaleX(-1);
-height:220px;
-pointer-events:none;
-opacity:0.9;
+.buy-channels{
+display:flex;
+flex-direction:column;
+gap:12px;
+margin-top:20px;
 }
 
-/* MOBILE */
+.buy-channels button{
+padding:12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+color:white;
+}
+
+.buy-channels button:nth-child(1){background:#1877F2;}
+.buy-channels button:nth-child(2){background:#ff2a7f;}
+.buy-channels button:nth-child(3){background:#06C755;}
+
+.close-btn{
+margin-top:20px;
+background:#444;
+padding:8px 16px;
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+}
 
 @media(max-width:768px){
-
-.pack-grid{
-grid-template-columns:1fr;
-}
-
-.luffy-left,
-.luffy-right{
-height:130px;
-}
-
+.pack-grid{grid-template-columns:1fr;}
 }
 
 </style>
@@ -245,96 +235,97 @@ NEXPLAY GAMESTORE
 
 <div class="pack-grid">
 
-<!-- SPECIAL PACK -->
-
 <div class="pack-box">
 <h2>SPECIAL PACK 🎮</h2>
 
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">80 Robux</div><span class="price">30 บาท</span><button class="buy-btn" onclick="buy('80 Robux - 30 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">240 Robux</div><span class="price">88 บาท</span><button class="buy-btn" onclick="buy('240 Robux - 88 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">500 Robux</div><span class="price">145 บาท</span><button class="buy-btn" onclick="buy('500 Robux - 145 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">1000 Robux</div><span class="price">290 บาท</span><button class="buy-btn" onclick="buy('1000 Robux - 290 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">1500 Robux</div><span class="price">435 บาท</span><button class="buy-btn" onclick="buy('1500 Robux - 435 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">2000 Robux</div><span class="price">580 บาท</span><button class="buy-btn" onclick="buy('2000 Robux - 580 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">4000 Robux</div><span class="price">1150 บาท</span><button class="buy-btn" onclick="buy('4000 Robux - 1150 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">6000 Robux</div><span class="price">1730 บาท</span><button class="buy-btn" onclick="buy('6000 Robux - 1730 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">8000 Robux</div><span class="price">2300 บาท</span><button class="buy-btn" onclick="buy('8000 Robux - 2300 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">10000 Robux</div><span class="price">2800 บาท</span><button class="buy-btn" onclick="buy('10000 Robux - 2800 บาท')">สั่งซื้อ</button></div>
 
 </div>
-
-<!-- PREMIUM -->
 
 <div class="pack-box">
 <h2>ROBLOX PREMIUM 🎮</h2>
 
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">Premium + 450R</div><span class="price">150 บาท</span><button class="buy-btn" onclick="buy('Premium + 450R - 150 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">Premium + 1000R</div><span class="price">300 บาท</span><button class="buy-btn" onclick="buy('Premium + 1000R - 300 บาท')">สั่งซื้อ</button></div>
-
 <div class="item"><div class="item-left"><img src="robux.png" class="robux-icon">Premium + 2200R</div><span class="price">590 บาท</span><button class="buy-btn" onclick="buy('Premium + 2200R - 590 บาท')">สั่งซื้อ</button></div>
 
 </div>
 
 </div>
 
-<footer>
-ช่องทางการติดต่อ
-</footer>
+<footer>ช่องทางการติดต่อ</footer>
 
 <div class="social">
-
 <a class="btn discord" href="https://discord.gg/nexplaygamestore99" target="_blank">Discord</a>
 <a class="btn facebook" href="https://www.facebook.com/NEXPLAY.GAMESTORE" target="_blank">Facebook</a>
 <a class="btn instagram" href="https://www.instagram.com/nexplay_gamestore/" target="_blank">Instagram</a>
+</div>
+
+<footer>© 2026 NEXPLAY GAMESTORE</footer>
 
 </div>
 
-<footer>
-© 2026 NEXPLAY GAMESTORE
-</footer>
+<div id="buyPopup" class="buy-popup">
+<div class="buy-box">
 
+<h2>เลือกช่องทางการสั่งซื้อ</h2>
+<p id="selectedPack"></p>
+
+<div class="buy-channels">
+<button onclick="sendFB()">Facebook</button>
+<button onclick="sendIG()">Instagram</button>
+<button onclick="sendLine()">LINE</button>
 </div>
 
-<!-- ROBUX FLOAT -->
+<button class="close-btn" onclick="closePopup()">ปิด</button>
 
-<img src="robux.png" class="robux-float" style="left:5%;animation-duration:8s;">
-<img src="robux.png" class="robux-float" style="left:20%;animation-duration:10s;">
-<img src="robux.png" class="robux-float" style="left:40%;animation-duration:7s;">
-<img src="robux.png" class="robux-float" style="left:60%;animation-duration:9s;">
-<img src="robux.png" class="robux-float" style="left:80%;animation-duration:11s;">
-
-<!-- LUFFY -->
-
-<img src="luffy.png" class="luffy-left">
-<img src="luffy.png" class="luffy-right">
+</div>
+</div>
 
 <script>
 
+let selectedPack=""
+
 function buy(pack){
+selectedPack=pack
+document.getElementById("selectedPack").innerText=pack
+document.getElementById("buyPopup").style.display="flex"
+}
 
-let page = "NEXPLAY.GAMESTORE"
+function closePopup(){
+document.getElementById("buyPopup").style.display="none"
+}
 
-let message = encodeURIComponent(
-"สวัสดีครับ ผมต้องการสั่งซื้อ\n" +
-pack +
-"\nจากเว็บไซต์ NEXPLAY GAMESTORE"
+function sendFB(){
+let page="NEXPLAY.GAMESTORE"
+let message=encodeURIComponent(
+"สวัสดีครับ ผมต้องการสั่งซื้อ\n"+selectedPack+"\nจากเว็บไซต์ NEXPLAY GAMESTORE"
 )
-
 window.open("https://m.me/"+page+"?text="+message)
+}
 
+function sendIG(){
+window.open("https://ig.me/m/nexplay_gamestore")
+}
+
+function sendLine(){
+let message=encodeURIComponent(
+"สวัสดีครับ/ค่ะ ต้องการสั่งซื้อ\n"+selectedPack+"\nจากเว็บไซต์ NEXPLAY GAMESTORE"
+)
+window.open("https://line.me/R/msg/text/?"+message)
 }
 
 </script>
 
 </body>
 </html>
+```
