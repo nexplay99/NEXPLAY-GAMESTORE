@@ -113,7 +113,6 @@ color:#00ff9c;
 font-weight:bold;
 }
 
-/* ปุ่มเด้ง */
 .buy-btn{
 background:#ff2a2a;
 border:none;
@@ -136,7 +135,6 @@ background:#ff0000;
 transform:scale(0.9);
 }
 
-/* social */
 .social{
 display:flex;
 justify-content:center;
@@ -168,23 +166,30 @@ margin-top:40px;
 opacity:0.8;
 }
 
-/* LUFFY */
+/* LUFFY FLOAT */
+@keyframes luffyFloat{
+0%{transform:translateY(-50%) translateY(0px);}
+50%{transform:translateY(-50%) translateY(-25px);}
+100%{transform:translateY(-50%) translateY(0px);}
+}
+
 .luffy-left{
 position:fixed;
 left:10px;
 top:50%;
-transform:translateY(-50%);
 height:220px;
 pointer-events:none;
+animation:luffyFloat 3s ease-in-out infinite;
 }
 
 .luffy-right{
 position:fixed;
 right:10px;
 top:50%;
-transform:translateY(-50%) scaleX(-1);
 height:220px;
 pointer-events:none;
+transform:scaleX(-1);
+animation:luffyFloat 3s ease-in-out infinite;
 }
 
 /* popup */
@@ -254,7 +259,7 @@ width:180px;
 border-radius:10px;
 }
 
-/* 💰 ROBUX FLOAT */
+/* ROBUX FLOAT */
 .robux-float{
 position:fixed;
 bottom:-50px;
@@ -293,7 +298,6 @@ animation:floatUp linear forwards;
 
 <div class="pack-grid">
 
-<!-- SPECIAL -->
 <div class="pack-box">
 <h2>SPECIAL PACK 🎮</h2>
 
@@ -303,14 +307,9 @@ animation:floatUp linear forwards;
 <div class="item"><div class="item-left"><img src="./robux.png" class="robux-icon">1000 Robux</div><span class="price">290 บาท</span><button class="buy-btn" onclick="buy('1000 Robux - 290 บาท')">สั่งซื้อ</button></div>
 <div class="item"><div class="item-left"><img src="./robux.png" class="robux-icon">1500 Robux</div><span class="price">435 บาท</span><button class="buy-btn" onclick="buy('1500 Robux - 435 บาท')">สั่งซื้อ</button></div>
 <div class="item"><div class="item-left"><img src="./robux.png" class="robux-icon">2000 Robux</div><span class="price">580 บาท</span><button class="buy-btn" onclick="buy('2000 Robux - 580 บาท')">สั่งซื้อ</button></div>
-<div class="item"><div class="item-left"><img src="./robux.png" class="robux-icon">4000 Robux</div><span class="price">1150 บาท</span><button class="buy-btn" onclick="buy('4000 Robux - 1150 บาท')">สั่งซื้อ</button></div>
-<div class="item"><div class="item-left"><img src="./robux.png" class="robux-icon">6000 Robux</div><span class="price">1730 บาท</span><button class="buy-btn" onclick="buy('6000 Robux - 1730 บาท')">สั่งซื้อ</button></div>
-<div class="item"><div class="item-left"><img src="./robux.png" class="robux-icon">8000 Robux</div><span class="price">2300 บาท</span><button class="buy-btn" onclick="buy('8000 Robux - 2300 บาท')">สั่งซื้อ</button></div>
-<div class="item"><div class="item-left"><img src="./robux.png" class="robux-icon">10000 Robux</div><span class="price">2800 บาท</span><button class="buy-btn" onclick="buy('10000 Robux - 2800 บาท')">สั่งซื้อ</button></div>
 
 </div>
 
-<!-- PREMIUM -->
 <div class="pack-box">
 <h2>ROBLOX PREMIUM 🎮</h2>
 
@@ -337,26 +336,6 @@ animation:floatUp linear forwards;
 <img src="./luffy.png" class="luffy-left">
 <img src="./luffy.png" class="luffy-right">
 
-<!-- POPUP -->
-<div id="chatPopup" class="chat-popup">
-<div class="chat-box">
-
-<h3>เลือกช่องทางสั่งซื้อ</h3>
-
-<button class="chat-btn fb" onclick="goChat('fb')">Facebook</button>
-<button class="chat-btn ig" onclick="goChat('ig')">Instagram</button>
-<button class="chat-btn line" onclick="showLineQR()">LINE</button>
-
-<div id="lineQR">
-<p>สแกน QR เพื่อแอด LINE</p>
-<img src="./lineqr.png">
-</div>
-
-<button class="close-btn" onclick="closeChat()">ปิด</button>
-
-</div>
-</div>
-
 <script>
 
 let selectedPack=""
@@ -366,31 +345,6 @@ selectedPack=pack
 document.getElementById("chatPopup").style.display="flex"
 }
 
-function closeChat(){
-document.getElementById("chatPopup").style.display="none"
-}
-
-function goChat(type){
-
-let message=encodeURIComponent(
-"สวัสดีครับ ต้องการสั่งซื้อ\n"+selectedPack+"\nจาก NEXPLAY GAMESTORE"
-)
-
-if(type==="fb"){
-window.open("https://m.me/NEXPLAY.GAMESTORE?text="+message)
-}
-
-if(type==="ig"){
-window.open("https://ig.me/m/nexplay_gamestore")
-}
-
-}
-
-function showLineQR(){
-document.getElementById("lineQR").style.display="block"
-}
-
-/* 💰 ROBUX FLOAT */
 function spawnRobux(){
 const img=document.createElement("img")
 img.src="./robux.png"
